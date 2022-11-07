@@ -1,0 +1,11 @@
+:root {
+  --dark-gray: #616161;
+
+  --x-margin: 70px;
+  --y-margin: 50px;
+
+  --text-title: 48px;
+  --text-header: 24px;
+  --text-normal: 16px;
+  --text-tiny: 12px;
+}
