@@ -8,10 +8,7 @@
     <!-- import google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
     <!-- import material icons -->
     <link
       rel="stylesheet"
@@ -21,7 +18,8 @@
     <link rel="stylesheet" href="./css/variables.css" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/intro.css" />
-    <link rel="stylesheet" href="./css/filter.css" />
+    <link rel="stylesheet" href="./css/defaults.css" />
+    <link rel="stylesheet" href="./css/criteria.css" />
 
     <!--import our libraries -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -32,35 +30,26 @@
   <body>
     <section class="intro">
       <h1 class="intro__title">
-        A<span class="title__highlight">www</span
-        ><span class="title__dot"></span>ards Investigator Tool
+        A<span class="title__highlight">www</span><span class="title__dot"></span>ards Investigator Tool
       </h1>
       <div class="intro__layout">
         <div class="intro__text">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. In arcu
-            cursus euismod quis viverra. Sit amet purus gravida quis blandit
-            turpis cursus. Tincidunt tortor aliquam nulla facilisi cras. Ac
-            turpis egestas sed tempus urna et pharetra pharetra. Tincidunt
-            tortor aliquam nulla facilisi cras.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. In arcu cursus euismod quis viverra. Sit amet purus gravida quis blandit turpis cursus.
+            Tincidunt tortor aliquam nulla facilisi cras. Ac turpis egestas sed tempus urna et pharetra pharetra.
+            Tincidunt tortor aliquam nulla facilisi cras.
           </p>
           <p>
-            Ac turpis egestas sed tempus urna et pharetra pharetra. Tincidunt
-            tortor aliquam nulla facilisi cras. Ac turpis egestas sed tempus
-            urna et pharetra pharetra. Ac turpis egestas sed tempus urna et
-            pharetra pharetra. Ac turpis egestas sed tempus urna et pharetra
-            pharetra. Tincidunt tortor aliquam nulla facilisi cras.
+            Ac turpis egestas sed tempus urna et pharetra pharetra. Tincidunt tortor aliquam nulla facilisi cras. Ac
+            turpis egestas sed tempus urna et pharetra pharetra. Ac turpis egestas sed tempus urna et pharetra pharetra.
+            Ac turpis egestas sed tempus urna et pharetra pharetra. Tincidunt tortor aliquam nulla facilisi cras.
           </p>
           <p>
             See
-            <a href="https://www.awwwards.com/about-evaluation/" target="_blank"
-              >Evaluation System</a
-            >
+            <a href="https://www.awwwards.com/about-evaluation/" target="_blank">Evaluation System</a>
             and
-            <a href="https://www.awwwards.com/jury/2022/" target="_blank"
-              >Jury Panel</a
-            >
+            <a href="https://www.awwwards.com/jury/2022/" target="_blank">Jury Panel</a>
             for more details.
           </p>
         </div>
@@ -70,14 +59,26 @@
 
     <!-- currently in progress being built by Brendan -->
 
-    <section class="filter">
+    <section class="criteria">
       <div class="section__title">
         Data Criteria
-        <span class="material-symbols-outlined section__arrow" data-expand>
-          expand_more
-        </span>
+        <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
-      <div class="section__content" data-expand-content>Hello</div>
+      <div class="section__content" data-expand-content>
+        <ul id="tag-list" class="tag__list">
+          <!-- filled in with javascript DOM manipulation-->
+        </ul>
+        <div class="criteria__actions">
+          <div class="actions__add">
+            <span class="material-symbols-outlined"> add_circle </span>
+            <span class="add__text">Add Tag</span>
+          </div>
+          <div class="actions__clear">
+            <span class="material-symbols-outlined"> restart_alt </span>
+            <span class="clear__text">Clear All</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- currently in progress being built by ? -->
@@ -85,21 +86,17 @@
     <section class="line">
       <div class="section__title">
         Line Chart
-        <span class="material-symbols-outlined section__arrow" data-expand>
-          expand_more
-        </span>
+        <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
       <div class="section__content" data-expand-content>Hello</div>
     </section>
 
     <!-- currently in progress being built by ? -->
 
-    <section class="world">
+    <section class="map">
       <div class="section__title">
         World Choropleth
-        <span class="material-symbols-outlined section__arrow" data-expand>
-          expand_more
-        </span>
+        <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
       <div class="section__content" data-expand-content>Hello</div>
     </section>
@@ -109,19 +106,25 @@
     <section class="sites">
       <div class="section__title">
         Selected Websites
-        <span class="material-symbols-outlined section__arrow" data-expand>
-          expand_more
-        </span>
+        <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
       <div class="section__content" data-expand-content>Hello</div>
     </section>
     <footer>
-      Created by Brendan Le, James Scholz, and Gabriel Jarrard for University of
-      Utah College Project - Not Affiliated with Awwwards.com
+      Created by Brendan Le, James Scholz, and Gabriel Jarrard for University of Utah College Project - Not Affiliated
+      with Awwwards.com
     </footer>
 
     <!--import js files -->
-    <script type="text/javascript" src="./js/expand.js"></script>
     <script type="text/javascript" src="./js/data.js"></script>
+
+    <script type="text/javascript" src="./js/criteria/render/options/renderTagCategoryOption.js"></script>
+    <script type="text/javascript" src="./js/criteria/render/options/renderTagConjunctionOption.js"></script>
+    <script type="text/javascript" src="./js/criteria/tagListeners.js"></script>
+    <script type="text/javascript" src="./js/criteria/render/renderTagOptions.js"></script>
+    <script type="text/javascript" src="./js/criteria/render/renderTag.js"></script>
+    <script type="text/javascript" src="./js/criteria/render/renderCriteria.js"></script>
+    <script type="text/javascript" src="./js/criteria/criteriaListeners.js"></script>
+    <script type="text/javascript" src="./js/misc/dropdownListeners.js"></script>
   </body>
 </html>

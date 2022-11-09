@@ -1,5 +1,9 @@
 :root {
+  --light-gray: #c9c9c9;
   --dark-gray: #616161;
+  --dark-blue: #1a73e8;
+  --faint-blue: #e9f1fd;
+  --dark-red: #df2424;
 
   --x-margin: 70px;
   --y-margin: 50px;

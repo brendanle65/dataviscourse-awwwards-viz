@@ -1,0 +1,20 @@
+html {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+  margin: var(--y-margin) var(--x-margin);
+}
+
+/** reset some default styles **/
+
+h1,
+p {
+  margin: 0px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
