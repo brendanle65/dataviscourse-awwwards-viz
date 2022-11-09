@@ -4,11 +4,16 @@
 
 .tag__item {
   display: flex;
+  align-items: flex-start;
+}
+
+.tag__label {
+  display: flex;
   align-items: center;
 }
 
 .tag__item + .tag__item {
-  margin-top: 24px;
+  margin-top: 12px;
 }
 
 .tag__color {
@@ -104,16 +109,12 @@
   min-width: max-content;
 }
 
-.select__option:hover {
+.select__opttagion:hover {
   background-color: var(--faint-blue);
 }
 
 .select__option--selected {
   background-color: var(--faint-blue);
-}
-
-.tag__select + .tag__select {
-  margin-left: 6px;
 }
 
 .option-sections__title {
@@ -160,7 +161,11 @@
 
 .tags__chain {
   display: flex;
-  max-width: 200px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: -6px;
+}
 
-  /* todo fix */
+.tag__select {
+  padding: 6px;
 }
