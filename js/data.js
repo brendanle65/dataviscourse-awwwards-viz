@@ -7,6 +7,7 @@
 
   console.log(categories);
   console.log(awards);
+  console.log(sites.length);
 })();
 
 //todo - go through each category and filter by awards
