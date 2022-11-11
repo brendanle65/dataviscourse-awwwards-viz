@@ -98,7 +98,12 @@
         World Choropleth
         <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
-      <div class="section__content" data-expand-content>Hello</div>
+      <div class="section__content" data-expand-content>
+        <svg id="the_map">
+          <g id="graticules"></g>
+          <g id="countries"></g>
+        </svg>
+      </div>
     </section>
 
     <!-- save for after project milestone - need to rescrape site for thumbnail urls -->
@@ -118,6 +123,7 @@
     <!--import js files -->
     <script type="text/javascript" src="./js/data.js"></script>
 
+    <script type="text/javascript" src="./js/map.js"></script>
     <script type="text/javascript" src="./js/criteria/render/options/renderTagCategoryOption.js"></script>
     <script type="text/javascript" src="./js/criteria/render/options/renderTagConjunctionOption.js"></script>
     <script type="text/javascript" src="./js/criteria/tagListeners.js"></script>
