@@ -109,7 +109,7 @@
   min-width: max-content;
 }
 
-.select__opttagion:hover {
+.select__option:hover {
   background-color: var(--faint-blue);
 }
 
@@ -128,10 +128,13 @@
 
 .option-sections__list {
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 70vw;
 }
 
-.option-sections__list .select__option + .select__option {
-  margin-left: 8px;
+.option-sections__list .select__option {
+  padding: 8px;
 }
 
 .criteria__actions {
@@ -168,4 +171,9 @@
 
 .tag__select {
   padding: 6px;
+}
+
+.select__value,
+.select__option {
+  text-transform: capitalize;
 }
