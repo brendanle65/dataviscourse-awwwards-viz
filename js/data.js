@@ -37,6 +37,14 @@ const globalState = {
 
 (async () => {
   const { data: sites } = await d3.json('data/Sites.json');
+  const { data: geoJSON } = await d3.json('data/geoJSON.json');
+
+  sites.forEach(site => {
+    if (site.awards) site.awards.forEach(awd => site.categories.push(awd));
+  });
+
+  globalState.data = sites;
+  globalState.categories = new Set(sites.map(({ categories }) => categories).flat());
 
   sites.forEach(site => {
     if (site.awards) site.awards.forEach(awd => site.categories.push(awd));
