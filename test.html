@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="linechart"></section>
+    <script>
+      var lc_w = 800;
+      var lc_h = 300;
+      var lc_padding = 40;
+
+      var lc_dataset, lc_xScale, lc_yScale, lc_xAxis, lc_yAxis, lc_line;
+
+      lc_dataset = [
+        [1, 2],
+        [13, 25],
+        [22, 33],
+        [32, 52],
+        [41, 71],
+        [53, 101],
+        [52, 106],
+        [61, 126],
+        [73, 132],
+        [78, 134],
+        [88, 131],
+        [89, 140],
+        [101, 143]
+      ];
+
+      lc_xScale = d3.scaleLinear().domain([0, 100]).range([0, lc_w]);
+      lc_yScale = d3.scaleLinear().domain([0, 200]).range([lc_h, 0]);
+
+      lc_xAxis = d3.axisBottom().scale(lc_xScale).ticks(10);
+      lc_yAxis = d3.axisLeft().scale(lc_yScale).ticks(10);
+
+      lc_line = d3
+        .line()
+        .x(function (d) {
+          return lc_xScale(d[0]);
+        })
+        .y(function (d) {
+          return lc_yScale(d[1]);
+        });
+
+      var svg = d3.select('#linechart').append('svg').attr('width', lc_w).attr('height', lc_h);
+
+      svg
+        .append('path')
+        .datum(lc_dataset)
+        .attr('stroke-width', 1)
+        .attr('d', lc_line)
+        .attr('fill', 'none')
+        .attr('stroke', 'steelblue')
+        .attr('stroke-width', 1.5);
+
+      svg
+        .append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(0,' + (lc_h - lc_padding) + ')')
+        .call(lc_xAxis);
+
+      svg
+        .append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(0,' + (lc_h - lc_padding) + ')')
+        .call(lc_yAxis);
+    </script>
+  </body>
+</html>
