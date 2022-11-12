@@ -1,7 +1,7 @@
 function attachTagListeners() {
   const tags = document.querySelectorAll('.tag__item');
   tags.forEach((tag, tagIdx) => {
-    const filter = filterDetails[tagIdx];
+    const filter = globalState.tags[tagIdx];
 
     const picker = tag.querySelector('.color__picker');
     picker.addEventListener('input', e => {
@@ -53,6 +53,8 @@ function attachTagListeners() {
           dropdownContent.style.display = 'none';
           dropdownInput.querySelector('.select__arrow').innerHTML = 'arrow_drop_down';
           dropdownInput.classList.toggle('select__input--active');
+
+          filter.data = getSubset(filter.logics);
         }
       });
     });

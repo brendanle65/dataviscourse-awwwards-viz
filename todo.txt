@@ -1,8 +1,0 @@
-Brendan Le
-
-1. Group Dataset 
-2. Fix Filter Dropdown
-3. Add Logical Default Values
-
-4. Process Book - Add Detailed Bulletpoints 
-5. Rescrape dataset for thumbnails
