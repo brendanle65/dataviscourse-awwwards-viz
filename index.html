@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./css/intro.css" />
     <link rel="stylesheet" href="./css/defaults.css" />
     <link rel="stylesheet" href="./css/criteria.css" />
+    <link rel="stylesheet" href="./css/line.css" />
 
     <!--import our libraries -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -89,68 +90,13 @@
         <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
       <div class="section__content" data-expand-content>
-        Hello meow meowmeowmeowmeow
-        <div id="linechart"></div>
-        <script type="text/javascript">
-          var lc_w = 800;
-          var lc_h = 300;
-          var lc_padding = 40;
-
-          var lc_dataset, lc_xScale, lc_yScale, lc_xAxis, lc_yAxis, lc_line;
-
-          lc_dataset = [
-            [1, 2],
-            [13, 25],
-            [22, 33],
-            [32, 52],
-            [41, 71],
-            [53, 101],
-            [52, 106],
-            [61, 126],
-            [73, 132],
-            [78, 134],
-            [88, 131],
-            [89, 140],
-            [101, 143]
-          ];
-
-          lc_xScale = d3.scaleLinear().domain([0, 100]).range([0, lc_w]);
-          lc_yScale = d3.scaleLinear().domain([0, 200]).range([lc_h, 0]);
-
-          lc_xAxis = d3.axisBottom().scale(lc_xScale).ticks(10);
-          lc_yAxis = d3.axisLeft().scale(lc_yScale).ticks(10);
-
-          lc_line = d3
-            .line()
-            .x(function (d) {
-              return lc_xScale(d[0]);
-            })
-            .y(function (d) {
-              return lc_yScale(d[1]);
-            });
-
-          var svg = d3.select('#linechart').append('svg').attr('width', lc_w).attr('height', lc_h);
-
-          svg
-            .append('path')
-            .datum(lc_dataset)
-            .attr('stroke-width', 1)
-            .attr('stroke', 'black')
-            .attr('fill', 'none')
-            .attr('d', lc_line);
-
-          svg
-            .append('g')
-            .attr('class', 'axis')
-            .attr('transform', 'translate(0,' + (lc_h - lc_padding) + ')')
-            .call(lc_xAxis);
-
-          svg
-            .append('g')
-            .attr('class', 'axis')
-            .attr('transform', 'translate(0,' + (lc_h - lc_padding) + ')')
-            .call(lc_yAxis);
-        </script>
+        <h3 class="line-title">Frequency of Submission Tags Throughout the Months on Awwwards.com</h3>
+        <svg id="line-chart">
+          <g id="x-axis"></g>
+          <g id="y-axis"></g>
+          <g id="lines"></g>
+          <g id="overlay"><line></line></g>
+        </svg>
       </div>
     </section>
 
@@ -162,7 +108,7 @@
         <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
       <div class="section__content" data-expand-content>
-        <svg id="the_map">
+        <svg id="map">
           <g id="graticules"></g>
           <g id="countries"></g>
         </svg>
@@ -184,17 +130,9 @@
     </footer>
 
     <!--import js files -->
-    <script type="text/javascript" src="./js/data.js"></script>
-
-    <script type="text/javascript" src="./js/map.js"></script>
-    <script type="text/javascript" src="./js/criteria/algos/getSubset.js"></script>
-    <script type="text/javascript" src="./js/criteria/render/options/renderTagCategoryOption.js"></script>
-    <script type="text/javascript" src="./js/criteria/render/options/renderTagConjunctionOption.js"></script>
-    <script type="text/javascript" src="./js/criteria/listeners/tagListeners.js"></script>
-    <script type="text/javascript" src="./js/criteria/render/renderTagOptions.js"></script>
-    <script type="text/javascript" src="./js/criteria/render/renderTag.js"></script>
-    <script type="text/javascript" src="./js/criteria/render/renderCriteria.js"></script>
-    <script type="text/javascript" src="./js/criteria/listeners/criteriaListeners.js"></script>
-    <script type="text/javascript" src="./js/misc/dropdownListeners.js"></script>
+    <script type="text/javascript" src="./js/TagView.js"></script>
+    <script type="text/javascript" src="./js/LineView.js"></script>
+    <script type="text/javascript" src="./js/MapView.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>
