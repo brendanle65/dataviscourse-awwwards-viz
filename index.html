@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./css/defaults.css" />
     <link rel="stylesheet" href="./css/criteria.css" />
     <link rel="stylesheet" href="./css/line.css" />
+    <link rel="stylesheet" href="./css/site.css" />
 
     <!--import our libraries -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -66,6 +67,8 @@
         <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
       <div class="section__content" data-expand-content>
+        <h3>Presets:</h3>
+        <ul id="preset-list"></ul>
         <ul id="tag-list" class="tag__list">
           <!-- filled in with javascript DOM manipulation-->
         </ul>
@@ -124,7 +127,7 @@
         Selected Websites
         <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
-      <div class="section__content" data-expand-content>Hello</div>
+      <div class="section__content" data-expand-content></div>
     </section>
     <footer>
       Created by Brendan Le, James Scholz, and Gabriel Jarrard for University of Utah College Project - Not Affiliated
@@ -132,9 +135,11 @@
     </footer>
 
     <!--import js files -->
+    <script type="text/javascript" src="./js/presets.js"></script>
     <script type="text/javascript" src="./js/TagView.js"></script>
     <script type="text/javascript" src="./js/LineView.js"></script>
     <script type="text/javascript" src="./js/MapView.js"></script>
+    <script type="text/javascript" src="./js/SiteView.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>

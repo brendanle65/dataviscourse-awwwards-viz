@@ -20,6 +20,7 @@ class TagView {
     // run rerenders when state of tags change
     window.addEventListener('createdTagsChange', () => {
       this.render();
+      console.log(this.globalApplicationState.createdTags);
     });
 
     // listen for event to add a new tag
@@ -50,6 +51,22 @@ class TagView {
 
   // top-level/main method for initial renders and rerenders of tag system view
   render() {
+    const presetList = document.querySelector('#preset-list');
+    presetList.innerHTML = this._renderPresets();
+
+    const presetsAll = document.querySelectorAll('.preset__item');
+    presetsAll.forEach((presetElem, idx) => {
+      presetElem.addEventListener('click', () => {
+        this.globalApplicationState.createdTags = presets[idx].tags;
+        this.globalApplicationState.createdTags.forEach(tag => {
+          const [partition, grouped] = this.getPartition(tag.conditions);
+          tag.partition = partition;
+          tag.grouped = grouped;
+        });
+        window.dispatchEvent(new Event('createdTagsChange'));
+      });
+    });
+
     const tagList = document.querySelector('#tag-list');
     tagList.innerHTML = '';
     this.globalApplicationState.createdTags.forEach(tag => {
@@ -141,6 +158,19 @@ class TagView {
     });
   }
 
+  _renderPresets() {
+    let html = '';
+    presets.forEach(preset => {
+      html += `
+        <li class = "preset__item">
+          ${preset.name}
+        </li>
+      `;
+    });
+
+    return html;
+  }
+
   // helper method to render tag bubble
   _renderTagBubble(conditions) {
     let html = '';
@@ -171,14 +201,111 @@ class TagView {
       'site of the month',
       'site of the year'
     ];
-    const design = ['Adobe Photoshop', 'After Effects', 'Figma', 'Blender'];
-    const tech = ['HTML5', 'CSS', 'Javascript', 'React', 'Framer Motion', 'Unreal Engine'];
+    const genre = [
+      'Art & Illustration',
+      'Technology',
+      'Portfolio',
+      'Architecture',
+      'Film & TV',
+      'Photography',
+      'Business & Corporate',
+      'Culture & Education',
+      'E-Commerce',
+      'Fashion',
+      'Mobile & Apps',
+      'Food & Drink',
+      'Hotel / Restaurant',
+      'Games & Entertainment',
+      'Real Estate',
+      'Sports',
+      'Magazine / Newspaper / Blog'
+    ];
+    const design = [
+      'Adobe Photoshop',
+      'After Effects',
+      'Adobe Illustrator',
+      'Figma',
+      'Blender',
+      'Lottie',
+      'Sketch',
+      'Adobe XD',
+      'Editor X',
+      'Cinema 4D'
+    ];
+    const tech = [
+      'React',
+      'Framer Motion',
+      'Unreal Engine',
+      'WebGL',
+      'Three.js',
+      'GSAP Animation',
+      'Webflow',
+      'Contentful',
+      'Wordpress',
+      'Shopify',
+      'Next.js',
+      'Webpack',
+      'Angular',
+      'Anime.js',
+      'Typescript',
+      'AWS',
+      'Vue.js',
+      'Vercel',
+      'jQuery',
+      'PHP',
+      'Bootstrap',
+      'Node.js',
+      'Tailwind CSS',
+      'Unity',
+      'GraphQL',
+      'Google Font API',
+      'Laravel',
+      'Svelte',
+      'VR',
+      'Typekit',
+      'Firebase',
+      'Python',
+      'Redux',
+      'Gatsby',
+      'Lo-dash',
+      'Nginx',
+      'Express',
+      'Netlify',
+      'PWA',
+      'Go',
+      'MongoDB',
+      'Underscore.js',
+      'Backbone.js',
+      'D3',
+      'Handlebars',
+      'Socket.io',
+      'Ruby',
+      'Nuxt.js'
+    ];
+    const trends = [
+      'Parallax',
+      'Illustration',
+      'Clean',
+      'Microinteractions',
+      'Flat Design',
+      'Single page',
+      'Minimal',
+      'Colorful',
+      'Storytelling',
+      'Sass',
+      'Data Visualization',
+      'Big Background Images',
+      'Infinite Scroll',
+      'Gestures / Interaction'
+    ];
 
     return `
       <ul class = "option-sections">
         ${this._renderCategoryDropdownList(awards, condition, 'Awards')}
+        ${this._renderCategoryDropdownList(genre, condition, 'Genre')}
         ${this._renderCategoryDropdownList(design, condition, 'Design Software')}
         ${this._renderCategoryDropdownList(tech, condition, 'Tech Software')}
+        ${this._renderCategoryDropdownList(trends, condition, 'Trends')}
       </ul>
     `;
   }
