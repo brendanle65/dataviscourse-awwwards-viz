@@ -1,0 +1,22 @@
+.sites__list {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.site__link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+}
+
+.site__image {
+  width: 100%;
+  height: 100%;
+}
+
+.site__name {
+  margin-top: 5px;
+}

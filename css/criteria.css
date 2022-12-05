@@ -177,3 +177,15 @@
 .select__option {
   text-transform: capitalize;
 }
+
+.preset__item {
+  cursor: pointer;
+}
+
+.preset__item + .preset__item {
+  margin-top: 10px;
+}
+
+#preset-list {
+  margin-bottom: 50px;
+}

@@ -17,50 +17,15 @@ async function loadData() {
 // This should be all you need, but feel free to add to this if you need to
 // communicate across the visualizations
 const globalApplicationState = {
-  createdTags: [
-    {
-      name: 'Design Tag 1',
-      color: '#4AE7CA',
-      conditions: ['Adobe Photoshop', 'OR', 'Figma'],
-      partition: [], // will be populated at runtime
-      grouped: [] // will be populated at runtime
-    },
-    {
-      name: 'Design Tag 2',
-      color: '#4D4AE7',
-      conditions: ['Adobe Photoshop', 'OR', 'Blender'],
-      partition: [],
-      grouped: []
-    },
-    {
-      name: 'Design Tag 3',
-      color: '#E75D4A',
-      conditions: ['Adobe Photoshop', 'AND', 'Art & Illustration'],
-      partition: [],
-      grouped: []
-    },
-    {
-      name: 'Design Tag 4',
-      color: '#188116',
-      conditions: ['Photography'],
-      partition: [],
-      grouped: []
-    },
-    {
-      name: 'Design Tag 5',
-      color: '#E34AE7',
-      conditions: ['Adobe Photoshop', 'AND', 'site of the day', 'OR', 'Blender'],
-      partition: [],
-      grouped: []
-    }
-  ],
+  createdTags: presets[0].tags,
   siteData: null,
   mapData: null,
 
   // views
   tagView: null,
   mapView: null,
-  lineView: null
+  lineView: null,
+  siteView: null
 };
 
 //******* APPLICATION MOUNTING *******
@@ -73,6 +38,7 @@ loadData().then(loadedData => {
   globalApplicationState.tagView = new TagView(globalApplicationState);
   globalApplicationState.lineView = new LineView(globalApplicationState);
   globalApplicationState.mapView = new MapView(globalApplicationState);
+  globalApplicationState.SiteView = new SiteView(globalApplicationState);
 
   // Attach listeners to control expand and collapsing of sections
   const expandArrows = document.querySelectorAll('span[data-expand]');
