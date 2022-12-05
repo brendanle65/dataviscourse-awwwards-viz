@@ -23,3 +23,12 @@ Ignore the prettier.config.js - that is just a formatting file for the prettier 
 - We are using Google Fonts and Icons for our web. They can be found at https://fonts.googleapis.com, https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap, and https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0 which are being imported via cdn.
 
 - We are using D3.js with its geo projection and topojson helper libraries. These are the same as the one in homework 4.
+
+## Link to Website:
+
+https://dataviscourse-aards-viz.web.app
+
+## Interaction:
+
+1. Clicking on the presets will load up a curated list of tags
+2. Hovering over a line will select it's data point that syncs up with some of the other sections
