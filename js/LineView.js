@@ -33,6 +33,7 @@ class LineView {
 
     // add x axis --> it is a date format
     this.xAxis = d3.scaleTime().domain(d3.extent(mergedDates));
+    const xAxis = this.xAxis; // i need this in a different scope (hack to get around the behavior of keyword of "this")
 
     // dynamically set width of chart and x-axis depending on how many ticks
     const tickLength = this.xAxis.ticks(d3.timeMonth).length;
@@ -97,20 +98,54 @@ class LineView {
       .join('path')
       .attr('fill', 'none')
       .attr('stroke', d => d.color)
-      .attr('stroke-width', 1)
-      .attr('d', ({ grouped }) => {
-        const generator = d3
-          .line()
-          .x(([date, values]) => {
-            const pass = new Date(values[0].date);
-            return this.xAxis(pass) + this.yAxisPadding;
-          })
-          .y(([date, values]) => {
-            return this.yAxis(values.length);
-          });
+      .attr('stroke-width', 3)
+      .attr('d', d => this.getLinePath(d));
 
-        // the last part of this call forwards the data into the line generator (d) is iterated over this provided data
-        return generator(grouped);
+    // render invisible outer lines (increase hoverable area)
+    this.svg
+      .select('#lines')
+      .selectAll('.line')
+      .data(this.globalApplicationState.createdTags)
+      .join('path')
+      .attr('fill', 'none')
+      .attr('stroke', 'transparent')
+      .attr('stroke-width', 30)
+      .attr('d', d => this.getLinePath(d))
+      .on('mousemove', function (e) {
+        const line = d3.select(this);
+        line.style('stroke-width', 7);
+        const datum = line.data()[0];
+
+        const dot = document.querySelector('#overlay');
+        dot.style.left = e.layerX - 10 + 'px';
+        dot.style.top = e.layerY - 10 + 'px';
+        dot.style.background = datum.color;
+        dot.style.opacity = '100%';
+
+        const correspondingDate = xAxis.invert(e.layerX);
+        const year = correspondingDate.getFullYear();
+        const month = correspondingDate.getMonth();
+        const subset = datum.grouped.get(`${month}/${year}`);
+        console.log(subset);
+      })
+      .on('mouseleave', function (e) {
+        d3.select(this).style('stroke-width', 3);
       });
+  }
+
+  // get the line path
+  getLinePath({ grouped }) {
+    const generator = d3
+      .line()
+      .x(([date, values]) => {
+        const pass = new Date(values[0].date);
+        return this.xAxis(pass) + this.yAxisPadding;
+      })
+      .y(([date, values]) => {
+        return this.yAxis(values.length);
+      });
+
+    // the last part of this call forwards the data into the line generator (d) is iterated over this provided data
+    return generator(grouped);
   }
 }

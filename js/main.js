@@ -9,6 +9,8 @@ async function loadData() {
   });
   const mapData = await d3.json('data/world.json');
 
+  console.log(new Set(siteData.map(({ categories }) => categories).flat()));
+
   return { siteData, mapData };
 }
 

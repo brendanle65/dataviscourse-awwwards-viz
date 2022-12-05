@@ -51,5 +51,32 @@ class MapView {
       .join('path')
       .attr('class', 'country')
       .attr('d', path);
+
+    this.render();
+  }
+
+  render() {
+    // should be passed down from Jame's work
+    const data = this.globalApplicationState.createdTags[0].grouped.get('9/2022');
+    const frequencyMappings = {};
+
+    for (let i = 0; i < data.length; i++) {
+      const countries = data[i].countries;
+      for (let j = 0; j < countries.length; j++) {
+        const country = countries[j];
+        if (country) {
+          // accounting for null value
+          // if not in map, set it's frequency to one
+          // else, increment by one
+          if (frequencyMappings[country]) {
+            frequencyMappings[country] += 1;
+          } else {
+            frequencyMappings[country] = 1;
+          }
+        }
+      }
+    }
+
+    //console.log(frequencyMappings);
   }
 }
