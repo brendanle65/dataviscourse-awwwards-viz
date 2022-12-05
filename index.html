@@ -27,6 +27,8 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v4.js"></script>
     <script src="https://d3js.org/topojson.v3.js"></script>
+    <!-- Added Slider Library -->
+    <script src="https://unpkg.com/d3-simple-slider"></script>
     <title>Awwwards.com Investigator Tool</title>
   </head>
   <body>
@@ -112,7 +114,8 @@
         World Choropleth
         <span class="material-symbols-outlined section__arrow" data-expand> expand_more </span>
       </div>
-      <div class="section__content" data-expand-content>
+      <div class="section__content" style="text-align: center" data-expand-content>
+        <h3 class="map-title">Frequency of Websites from Selected Time and Tag</h3>
         <svg id="map">
           <g id="graticules"></g>
           <g id="countries"></g>

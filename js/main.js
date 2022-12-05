@@ -2,6 +2,7 @@
 // We took care of that for you
 async function loadData() {
   const sites = await d3.json('data/sites.json');
+  const ISO_mapping = await d3.csv('data/iso_mapping_table.csv');
   const siteData = sites.data;
   siteData.forEach(site => {
     site.date = new Date(site.date);
@@ -9,7 +10,7 @@ async function loadData() {
   });
   const mapData = await d3.json('data/world.json');
 
-  return { siteData, mapData };
+  return { siteData, mapData, ISO_mapping };
 }
 
 // ******* STATE MANAGEMENT *******
@@ -32,7 +33,7 @@ loadData().then(loadedData => {
   // Store the loaded data into the globalApplicationState
   globalApplicationState.siteData = loadedData.siteData;
   globalApplicationState.mapData = loadedData.mapData;
-
+  globalApplicationState.iso_mapping =loadedData.ISO_mapping
   // Creates the view objects with the global state passed in
   globalApplicationState.tagView = new TagView(globalApplicationState);
   globalApplicationState.lineView = new LineView(globalApplicationState);
