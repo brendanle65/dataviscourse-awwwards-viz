@@ -38,14 +38,14 @@ const presets = [
       {
         name: 'Vue.js',
         color: '#188116',
-        conditions: ['Angular'],
+        conditions: ['Vue.js'],
         partition: [],
         grouped: []
       },
       {
         name: 'Angular.js',
         color: '#E34AE7',
-        conditions: ['Vue.js'],
+        conditions: ['Angular.js'],
         partition: [],
         grouped: []
       },

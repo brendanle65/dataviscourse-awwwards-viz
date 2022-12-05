@@ -17,7 +17,7 @@ async function loadData() {
 // This should be all you need, but feel free to add to this if you need to
 // communicate across the visualizations
 const globalApplicationState = {
-  createdTags: presets[0].tags,
+  createdTags: presets[1].tags,
   siteData: null,
   mapData: null,
 
@@ -33,7 +33,7 @@ loadData().then(loadedData => {
   // Store the loaded data into the globalApplicationState
   globalApplicationState.siteData = loadedData.siteData;
   globalApplicationState.mapData = loadedData.mapData;
-  globalApplicationState.iso_mapping =loadedData.ISO_mapping
+  globalApplicationState.iso_mapping = loadedData.ISO_mapping;
   // Creates the view objects with the global state passed in
   globalApplicationState.tagView = new TagView(globalApplicationState);
   globalApplicationState.lineView = new LineView(globalApplicationState);

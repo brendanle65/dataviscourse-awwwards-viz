@@ -6,11 +6,15 @@ class SiteView {
    */
   constructor(globalApplicationState) {
     this.globalApplicationState = globalApplicationState;
-    this.render();
+    this.render(this.globalApplicationState.createdTags[0].grouped.get('9/2022')); //default
+
+    window.addEventListener('selectedDataPoint', e => {
+      this.render(e.detail);
+      console.log(e.detail);
+    });
   }
 
-  render() {
-    const data = this.globalApplicationState.createdTags[0].grouped.get('9/2022');
+  render(data) {
     const sectionList = document.querySelector('.sites .section__content');
 
     sectionList.innerHTML = `

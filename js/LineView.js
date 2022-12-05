@@ -126,10 +126,8 @@ class LineView {
         const year = correspondingDate.getFullYear();
         const month = correspondingDate.getMonth();
         const subset = datum.grouped.get(`${month}/${year}`);
-        console.log(subset);
-      })
-      .on('mouseleave', function (e) {
-        d3.select(this).style('stroke-width', 3);
+        window.dispatchEvent(new CustomEvent('selectedDataPoint', { detail: subset }));
+        console.log(datum);
       });
   }
 
